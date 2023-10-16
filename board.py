@@ -11,3 +11,6 @@ class Board():
             rv +="".join([".0" [c] for c in row])
             rv += "\n"
         return rv
+    
+    def place_cell(self,row,col):
+        self.board[row][col] = True

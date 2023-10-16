@@ -1,6 +1,8 @@
 class Board():
-    def __init__(self,width = 3,height = 3):
-        self.board = [[False]*3, [False]*3, [False]*3] 
+    def __init__(self,width,height):
+        self.height = height
+        self.width = width
+        self.board = [[False]*width for x in range(height)] 
 
 
     def as_str(self):

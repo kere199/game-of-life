@@ -6,7 +6,7 @@ class Board():
         self.new_board = [[False] * self.width for _ in range(self.height)]
 
 
-    def as_str(self):
+    def __str__(self):
         rv = ""
         for row in self.board:
             rv +="".join([".0" [c] for c in row])
@@ -33,7 +33,7 @@ class Board():
     
 
 
-    def next_shape(self):
+    def next(self):
         self.new_board = [[False] * self.width for _ in range(self.height)]
 
         for row in range(self.height):
@@ -49,4 +49,16 @@ class Board():
                         self.new_board[row][col] = True
         self.board, self.new_board = self.new_board, self.board
 
-        
+    def is_alive(self,row,col):
+        if self.board[row][col]:
+            return True
+        else:
+            return False
+
+
+    def toggle_cell(self,row,col):
+        if self.board[row][col]:
+            self.board[row][col] = False
+        else:
+            self.board[row][col] = True
+

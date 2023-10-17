@@ -56,9 +56,6 @@ class Board():
             return False
 
 
-    def toggle_cell(self,row,col):
-        if self.board[row][col]:
-            self.board[row][col] = False
-        else:
-            self.board[row][col] = True
+    def toggle_cell(self, row, col):
+     self.board[row][col] = not self.board[row][col]
 

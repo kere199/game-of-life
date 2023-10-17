@@ -3,6 +3,7 @@ class Board():
         self.height = height
         self.width = width
         self.board = [[False]*width for x in range(height)] 
+        self.new_board = [[False] * self.width for _ in range(self.height)]
 
 
     def as_str(self):
@@ -33,19 +34,19 @@ class Board():
 
 
     def next_shape(self):
-        new_board = [[False] * self.width for _ in range(self.height)]
+        self.new_board = [[False] * self.width for _ in range(self.height)]
 
         for row in range(self.height):
             for col in range(self.width):
                 alive_neighbors = self.get_alive_neighbours(row, col)
                 if self.board[row][col]:
                     if alive_neighbors < 2 or alive_neighbors > 3:
-                        new_board[row][col] = False
+                        self.new_board[row][col] = False
                     else:
-                        new_board[row][col] = True
+                        self.new_board[row][col] = True
                 else:
                     if alive_neighbors == 3:
-                        new_board[row][col] = True
-        self.board = new_board
+                        self.new_board[row][col] = True
+        self.board, self.new_board = self.new_board, self.board
 
         
